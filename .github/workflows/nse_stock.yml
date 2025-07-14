@@ -19,9 +19,9 @@ jobs:
           pip install -r requirements.txt
       - name: Run stock alert script
         env:
-          TWILIO_SID: ${{ secrets.TWILIO_SID }}
-          TWILIO_TOKEN: ${{ secrets.TWILIO_TOKEN }}
-          WHATSAPP_FROM: ${{ secrets.WHATSAPP_FROM }}
-          WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
+          TWILIO_SID: ${{ secrets.ACCOUNT_SID }}
+          TWILIO_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          WHATSAPP_FROM: ${{ secrets.FROM_WHATSAPP_NUMBER }}
+          WHATSAPP_TO: ${{ secrets.TO_WHATSAPP_NUMBER }}
         run: |
           python main.py
