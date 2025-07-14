@@ -6,8 +6,8 @@ import schedule
 import time
 import os
 
-account_sid = os.getenv('TWILIO_SID')
-auth_token = os.getenv('TWILIO_TOKEN')
+account_sid = os.getenv('account_sid')
+auth_token = os.getenv('auth_token')
 from_whatsapp_number = os.getenv('WHATSAPP_FROM')
 to_whatsapp_number = os.getenv('WHATSAPP_TO')
 
