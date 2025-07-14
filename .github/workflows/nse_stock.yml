@@ -24,4 +24,4 @@ jobs:
           WHATSAPP_FROM: ${{ secrets.WHATSAPP_FROM }}
           WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
         run: |
-          python stock_alert.py
+          python main.py
