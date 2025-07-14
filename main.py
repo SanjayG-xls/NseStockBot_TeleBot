@@ -32,12 +32,8 @@ def get_stock_prices():
     )
     print("✅ WhatsApp message sent.")
 
-# Schedule every 6 hours
-schedule.every(6).hours.do(get_stock_prices)
+
 
 print("Bot Started... You'll get WhatsApp every 6 hours.")
 get_stock_prices()  # Send first message immediately
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
