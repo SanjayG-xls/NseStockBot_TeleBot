@@ -6,10 +6,10 @@ import schedule
 import time
 import os
 
-account_sid = os.getenv('account_sid')
-auth_token = os.getenv('auth_token')
-from_whatsapp_number = os.getenv('WHATSAPP_FROM')
-to_whatsapp_number = os.getenv('WHATSAPP_TO')
+account_sid = os.getenv('ACCOUNT_SID')
+auth_token = os.getenv('AUTH_TOKEN')
+from_whatsapp_number = os.getenv('FROM_WHATSAPP_NUMBER')
+to_whatsapp_number = os.getenv('TO_WHATSAPP_NUMBER')
 
 client = Client(account_sid, auth_token)
 
