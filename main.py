@@ -4,12 +4,11 @@ from nsepython import nse_eq
 from twilio.rest import Client
 import schedule
 import time
-import os
 
-account_sid = os.getenv('ACCOUNT_SID')
-auth_token = os.getenv('AUTH_TOKEN')
-from_whatsapp_number = os.getenv('FROM_WHATSAPP_NUMBER')
-to_whatsapp_number = os.getenv('TO_WHATSAPP_NUMBER')
+account_sid = 'ACce508ff0e6e99f5a186506de8f4aca67'
+auth_token = '8d1a4c16530ab95104c7a0647734064
+from_whatsapp_number = 'whatsapp:+14155238886'
+to_whatsapp_number = 'whatsapp:+917806878387'
 
 client = Client(account_sid, auth_token)
 
