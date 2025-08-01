@@ -3,8 +3,8 @@ import requests
 
 import datetime
 
-bot_token = '8000479583:AAFNQPBMrTgc0x_vLUHd70699TlAowvWZ5E'
-chat_id = '6865677522'
+bot_token = os.environ['XLSXNSE_BOT_TOKEN']
+chat_id = os.environ['XLSXNSE_CHAT_ID']
 
 stocks = ['SOUTHBANK', 'IDFCFIRSTB', 'PGINVIT', 'GOLDBEES', 'MRF']
 
