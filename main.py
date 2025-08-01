@@ -1,39 +1,29 @@
-# ALZAPWVD1W9W74ASJXE2PQYA   recovry
-
 from nsepython import nse_eq
-from twilio.rest import Client
-import schedule
-import time
+import requests
 
-account_sid = 'ACce508ff0e6e99f5a186506de8f4aca67'
-auth_token = '8d1a4c16530ab95104c7a06477340640'
-from_whatsapp_number = 'whatsapp:+14155238886'
-to_whatsapp_number = 'whatsapp:+917806878387'
+import datetime
 
-client = Client(account_sid, auth_token)
+bot_token = '8000479583:AAFNQPBMrTgc0x_vLUHd70699TlAowvWZ5E'
+chat_id = '6865677522'
 
-stocks = ['SOUTHBANK', 'IDFCFIRSTB', 'HDFCBANK' , 'SUZLON' , 'RPOWER']
+stocks = ['SOUTHBANK', 'IDFCFIRSTB', 'PGINVIT', 'GOLDBEES', 'MRF']
 
 def get_stock_prices():
-    message = "📈 NSE Stock Prices Update:\n"
+    message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
     for stock in stocks:
         try:
             data = nse_eq(stock)
             ltp = data['priceInfo']['lastPrice']
             message += f"{stock}: ₹{ltp}\n"
         except Exception as e:
-            message += f"{stock}: Error fetching data\n"
-    print(message)
+            message += f"{stock}: ❌ Error fetching data\n"
 
-    client.messages.create(
-        body=message,
-        from_=from_whatsapp_number,
-        to=to_whatsapp_number
-    )
-    print("✅ WhatsApp message sent.")
+    send_telegram(message)
 
+def send_telegram(msg):
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {'chat_id': chat_id, 'text': msg}
+    requests.post(url, data=payload)
 
-
-print("Bot Started... You'll get WhatsApp every 6 hours.")
-get_stock_prices()  # Send first message immediately
-
+if __name__ == "__main__":
+    get_stock_prices()
