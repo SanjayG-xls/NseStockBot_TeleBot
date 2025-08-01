@@ -2,9 +2,9 @@ name: Telegram Stock Bot
 
 on:
   schedule:
-    - cron: '0 4 * * *'   
-    - cron: '30 8 * * *'  
-  workflow_dispatch:      
+    - cron: '0 4 * * *'    # 9:30 AM IST
+    - cron: '30 8 * * *'   # 2:00 PM IST
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -23,15 +23,9 @@ jobs:
         run: |
           pip install requests nsepython
 
-      - name: Run stock bot
+      - name: Run main.py
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python3 -c "
-import os
-os.environ['bot_token'] = '${{ secrets.TELEGRAM_BOT_TOKEN }}'
-os.environ['chat_id'] = '${{ secrets.TELEGRAM_CHAT_ID }}'
-from stock_bot import get_stock_prices
-get_stock_prices()
-"
+          python3 main.py
