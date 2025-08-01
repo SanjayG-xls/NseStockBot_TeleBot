@@ -1,6 +1,6 @@
 from nsepython import nse_eq
 import requests
-
+import os 
 import datetime
 
 bot_token = os.environ['XLSXNSE_BOT_TOKEN']
@@ -27,3 +27,4 @@ def send_telegram(msg):
 
 if __name__ == "__main__":
     get_stock_prices()
+
