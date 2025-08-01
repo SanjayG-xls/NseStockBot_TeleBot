@@ -1,3 +1,2 @@
 nsepython
-twilio
-schedule
+requests
