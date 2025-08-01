@@ -23,9 +23,15 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run main.py
+      - name: Debug Secrets
+        run: |
+          echo "BOT TOKEN LENGTH: ${#XLSXNSE_BOT_TOKEN}"
+          echo "CHAT ID LENGTH: ${#XLSXNSE_CHAT_ID}"
         env:
           XLSXNSE_BOT_TOKEN: ${{ secrets.XLSXNSE_BOT_TOKEN }}
           XLSXNSE_CHAT_ID: ${{ secrets.XLSXNSE_CHAT_ID }}
-        run: |
-          python3 main.py
+
+      - name: Run main.py
+        env:
+          XLSXNSE_BOT_TOKEN: ${{ secrets.XLSXNSE_BOT_TOKEN }}
+          XLSXNSE_CHAT_ID: ${{ secrets.XLSXNSE_CHA_
