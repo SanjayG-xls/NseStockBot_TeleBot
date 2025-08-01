@@ -1,22 +1,37 @@
-name: NSE Stock WhatsApp
+name: Telegram Stock Bot
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # every 6 hours
-  workflow_dispatch: # manual trigger option
+    - cron: '0 4 * * *'   
+    - cron: '30 8 * * *'  
+  workflow_dispatch:      
 
 jobs:
-  stock-whatsapp:
+  run-bot:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-      - name: Run stock alert script
+          pip install requests nsepython
+
+      - name: Run stock bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python main.py
+          python3 -c "
+import os
+os.environ['bot_token'] = '${{ secrets.TELEGRAM_BOT_TOKEN }}'
+os.environ['chat_id'] = '${{ secrets.TELEGRAM_CHAT_ID }}'
+from stock_bot import get_stock_prices
+get_stock_prices()
+"
