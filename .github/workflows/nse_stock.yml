@@ -25,7 +25,7 @@ jobs:
 
       - name: Run main.py
         env:
-          XLSXNSE_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          XLSXNSE_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          XLSXNSE_BOT_TOKEN: ${{ secrets.XLSXNSE_BOT_TOKEN }}
+          XLSXNSE_CHAT_ID: ${{ secrets.XLSXNSE_CHAT_ID }}
         run: |
           python3 main.py
