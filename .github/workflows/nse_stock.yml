@@ -27,3 +27,4 @@ jobs:
         env:
           XLSXNSE_BOT_TOKEN: ${{ secrets.XLSXNSE_BOT_TOKEN }}
           XLSXNSE_CHAT_ID: ${{ secrets.XLSXNSE_CHAT_ID }}
+        run: python3 main.py
