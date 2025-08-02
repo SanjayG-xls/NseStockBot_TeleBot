@@ -1,30 +1,41 @@
-from nsepython import nse_eq
+import yfinance as yf
 import requests
 import os
-import datetime
+
 
 bot_token = "8000479583:AAFNQPBMrTgc0x_vLUHd70699TlAowvWZ5E"
 chat_id = "6865677522"
-stocks = ['SOUTHBANK', 'IDFCFIRSTB', 'PGINVIT', 'GOLDBEES', 'MRF']
+
+stocks = {
+    'SOUTHBANK.NS': 'SOUTHBANK',
+    'IDFCFIRSTB.NS': 'IDFCFIRSTB',
+    'PGINVIT.NS': 'PGINVIT',
+    'GOLDBEES.NS': 'GOLDBEES',
+    'MRF.NS': 'MRF'
+}
 
 def get_stock_prices():
     message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
-    for stock in stocks:
+    for symbol, name in stocks.items():
         try:
-            data = nse_eq(stock)
-            ltp = data['priceInfo']['lastPrice']
-            message += f"{stock}: ₹{ltp}\n"
+            stock = yf.Ticker(symbol)
+            price = stock.info['regularMarketPrice']
+            message += f"{name}: ₹{price}\n"
         except Exception as e:
-            message += f"{stock}: ❌ Error fetching data\n"
+            print(f"Error fetching {name} ({symbol}): {e}")
+            message += f"{name}: ❌ Error fetching data\n"
 
     send_telegram(message)
 
 def send_telegram(msg):
+    if not bot_token or not chat_id:
+        print("Missing bot token or chat ID")
+        return
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     payload = {'chat_id': chat_id, 'text': msg}
-    requests.post(url, data=payload)
+    response = requests.post(url, data=payload)
+    if response.status_code != 200:
+        print(f"Failed to send Telegram message: {response.text}")
 
 if __name__ == "__main__":
     get_stock_prices()
-
-
