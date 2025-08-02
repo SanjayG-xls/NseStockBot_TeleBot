@@ -3,8 +3,8 @@ import requests
 import os
 
 
-bot_token = "8000479583:AAFNQPBMrTgc0x_vLUHd70699TlAowvWZ5E"
-chat_id = "6865677522"
+bot_token = os.getenv("XLSXNSE_BOT_TOKEN")
+chat_id = os.getenv("XLSXNSE_CHAT_ID")
 
 stocks = {
     'SOUTHBANK.NS': 'SOUTHBANK',
@@ -39,3 +39,4 @@ def send_telegram(msg):
 
 if __name__ == "__main__":
     get_stock_prices()
+
