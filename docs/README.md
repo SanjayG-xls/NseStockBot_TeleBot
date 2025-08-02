@@ -5,7 +5,7 @@ This is a scheduled Python bot that fetches stock prices using Yahoo Finance and
 💖 Support This Project
 If you found this project useful or want to support its development, consider contributing:
 
-👉 linktr.ee/Sanjay_xlsX
+👉 [![Support via Linktree](https://img.shields.io/badge/Support-Linktree-blueviolet?logo=buymeacoffee&style=flat-square)](https://linktr.ee/Sanjay_xlsX)
 
 Every little bit helps! 🙌
 ---
