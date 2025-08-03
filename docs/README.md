@@ -12,7 +12,7 @@ Every little bit helps! 🙌
 
 ## 🚀 Features
 
-- ✅ Gets real-time stock prices using `yfinance`  
+- ✅ Gets real-time stock prices using `nsepython`  
 - ✅ Sends formatted messages to a Telegram chat  
 - ✅ Scheduled to run at **9:30 AM** and **2:00 PM IST** daily via **GitHub Actions**  
 - ✅ Securely uses **GitHub Secrets** for bot token and chat ID  
@@ -22,7 +22,7 @@ Every little bit helps! 🙌
 ## 🛠️ Technologies Used
 
 - Python 3.11  
-- [yfinance](https://github.com/ranaroussi/yfinance) for stock data  
+- [nsepython](https://pypi.org/project/nsepython) for stock data  
 - Telegram Bot API  
 - GitHub Actions for automation  
 
