@@ -1,25 +1,24 @@
-import yfinance as yf
+from nsepython import nse_eq
 import requests
 import os
-
 
 bot_token = os.getenv("XLSXNSE_BOT_TOKEN")
 chat_id = os.getenv("XLSXNSE_CHAT_ID")
 
 stocks = {
-    'SOUTHBANK.NS': 'SOUTHBANK',
-    'IDFCFIRSTB.NS': 'IDFCFIRSTB',
-    'PGINVIT.NS': 'PGINVIT',
-    'GOLDBEES.NS': 'GOLDBEES',
-    'MRF.NS': 'MRF'
+    'SOUTHBANK': 'SOUTHBANK',
+    'IDFCFIRSTB': 'IDFCFIRSTB',
+    'PGINVIT': 'PGINVIT',
+    'GOLDBEES': 'GOLDBEES',
+    'MRF': 'MRF'
 }
 
 def get_stock_prices():
     message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
     for symbol, name in stocks.items():
         try:
-            stock = yf.Ticker(symbol)
-            price = stock.info['regularMarketPrice']
+            data = nse_eq(symbol)
+            price = data['priceInfo']['lastPrice']
             message += f"{name}: ₹{price}\n"
         except Exception as e:
             print(f"Error fetching {name} ({symbol}): {e}")
@@ -39,4 +38,3 @@ def send_telegram(msg):
 
 if __name__ == "__main__":
     get_stock_prices()
-
