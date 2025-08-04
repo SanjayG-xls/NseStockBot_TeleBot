@@ -1,28 +1,28 @@
-from jugaad_data.nse import NSELive
+import yfinance as yf
 import requests
 import os
 
 bot_token = os.getenv("XLSXNSE_BOT_TOKEN")
 chat_id = os.getenv("XLSXNSE_CHAT_ID")
 
+# NSE tickers end with .NS in yfinance
 stocks = {
-    'SOUTHBANK': 'SOUTHBANK',
-    'IDFCFIRSTB': 'IDFCFIRSTB',
-    'PGINVIT': 'PGINVIT',
-    'GOLDBEES': 'GOLDBEES',
-    'MRF': 'MRF'
+    'SOUTHBANK': 'SOUTHBANK.NS',
+    'IDFCFIRSTB': 'IDFCFIRSTB.NS',
+    'PGINVIT': 'PGINVIT.NS',
+    'GOLDBEES': 'GOLDBEES.NS',
+    'MRF': 'MRF.NS'
 }
 
 def get_stock_prices():
     message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
-    nse = NSELive()
-    for symbol, name in stocks.items():
+    for name, ticker in stocks.items():
         try:
-            data = nse.stock_quote(symbol)
-            price = data['priceInfo']['lastPrice']
+            stock = yf.Ticker(ticker)
+            price = stock.info['regularMarketPrice']
             message += f"{name}: ₹{price}\n"
         except Exception as e:
-            print(f"Error fetching {name} ({symbol}): {e}")
+            print(f"Error fetching {name} ({ticker}): {e}")
             message += f"{name}: ❌ Error fetching data\n"
 
     send_telegram(message)
@@ -38,4 +38,4 @@ def send_telegram(msg):
         print(f"Failed to send Telegram message: {response.text}")
 
 if __name__ == "__main__":
-    get_stock_prices()
+    get
