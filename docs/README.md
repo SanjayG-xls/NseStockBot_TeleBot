@@ -22,7 +22,7 @@ Every little bit helps! 🙌
 ## 🛠️ Technologies Used
 
 - Python 3.11  
-- [nsepython](https://pypi.org/project/nsepython) for stock data  
+- [yfinance](https://pypi.org/project/yfinance) for stock data  
 - Telegram Bot API  
 - GitHub Actions for automation  
 
