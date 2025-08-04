@@ -1,4 +1,4 @@
-from nsepython import nse_eq
+from jugaad_data.nse import equity_quote
 import requests
 import os
 
@@ -17,7 +17,7 @@ def get_stock_prices():
     message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
     for symbol, name in stocks.items():
         try:
-            data = nse_eq(symbol)
+            data = equity_quote(symbol)
             price = data['priceInfo']['lastPrice']
             message += f"{name}: ₹{price}\n"
         except Exception as e:
