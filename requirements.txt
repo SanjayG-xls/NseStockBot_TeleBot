@@ -1,2 +1,2 @@
-jugaad-data
+yfinance
 requests
