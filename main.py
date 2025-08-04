@@ -1,4 +1,4 @@
-from jugaad_data import nse
+from jugaad_data.nse import NSELive
 import requests
 import os
 
@@ -15,9 +15,10 @@ stocks = {
 
 def get_stock_prices():
     message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
+    nse = NSELive()
     for symbol, name in stocks.items():
         try:
-            data = nse.equity_quote(symbol)
+            data = nse.stock_quote(symbol)
             price = data['priceInfo']['lastPrice']
             message += f"{name}: ₹{price}\n"
         except Exception as e:
