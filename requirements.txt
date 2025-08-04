@@ -1,2 +1,2 @@
-nsepython
+jugaad-data
 requests
