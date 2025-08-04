@@ -38,4 +38,5 @@ def send_telegram(msg):
         print(f"Failed to send Telegram message: {response.text}")
 
 if __name__ == "__main__":
-    get
+    get_stock_prices()
+
