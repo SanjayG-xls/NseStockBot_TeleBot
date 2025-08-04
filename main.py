@@ -1,4 +1,4 @@
-from jugaad_data import stock_price
+from jugaad_data import nse
 import requests
 import os
 
@@ -17,7 +17,8 @@ def get_stock_prices():
     message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
     for symbol, name in stocks.items():
         try:
-            price = stock_price(symbol)
+            data = nse.equity_quote(symbol)
+            price = data['priceInfo']['lastPrice']
             message += f"{name}: ₹{price}\n"
         except Exception as e:
             print(f"Error fetching {name} ({symbol}): {e}")
