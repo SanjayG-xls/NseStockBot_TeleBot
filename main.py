@@ -5,7 +5,6 @@ import os
 bot_token = os.getenv("XLSXNSE_BOT_TOKEN")
 chat_id = os.getenv("XLSXNSE_CHAT_ID")
 
-# NSE tickers end with .NS in yfinance
 stocks = {
     'SOUTHBANK': 'SOUTHBANK.NS',
     'IDFCFIRSTB': 'IDFCFIRSTB.NS',
