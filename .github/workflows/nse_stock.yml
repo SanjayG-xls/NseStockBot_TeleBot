@@ -2,8 +2,8 @@ name: Telegram Stock Bot
 
 on:
   schedule:
-    - cron: '0 4 * * *'    # 9:30 AM IST
-    - cron: '30 8 * * *'   # 2:00 PM IST
+    - cron: '0 4 * * *'    
+    - cron: '30 8 * * *'   
   workflow_dispatch:
 
 jobs:
