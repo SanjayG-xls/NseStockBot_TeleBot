@@ -10,7 +10,9 @@ stocks = {
     'IDFCFIRSTB': 'IDFCFIRSTB.NS',
     'PGINVIT': 'PGINVIT.NS',
     'GOLDBEES': 'GOLDBEES.NS',
-    'MRF': 'MRF.NS'
+    'KTKBANK': 'KTKBANK.NS',
+    'ITC': 'ITC.NS',
+    'WIPRO': 'WIPRO.NS'
 }
 
 def get_stock_prices():
