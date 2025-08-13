@@ -16,7 +16,7 @@ stocks = {
 }
 
 def get_stock_prices():
-    message = "----------> 📈 NSE STOCKS INFO 📈<----------\n"
+    message = "-----> 📈 NSE STOCKS INFO 📈<-----\n"
     for name, ticker in stocks.items():
         try:
             stock = yf.Ticker(ticker)
